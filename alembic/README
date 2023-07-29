@@ -1,0 +1,18 @@
+# Основные команды alembic:
+1. Инициализация Alembic в проекте
+```comandline
+alembic init --template async alembic
+```
+2. Создание файла миграции (файла со списком необходимых изменений):
+```comandline
+alembic revision
+```
+3. Применение миграций — фактическое внесение в БД изменений:
+```comandline
+alembic upgrade head
+```
+4. Миграции можно создавать автоматически(используется с ключём -m):
+```comandline
+alembic revision --autogenerate -m "Comment"
+```
+# Для более подробного изучения можно обратиться по ключу -h; --help
