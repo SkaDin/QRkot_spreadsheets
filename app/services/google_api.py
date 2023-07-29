@@ -80,7 +80,7 @@ async def spreadsheets_update_value(
         'majorDimension': 'ROWS',
         'values': table_values
     }
-    response = await wrapper_service.as_service_account(
+    response = await wrapper_service.as_service_account( # noqa
         service.spreadsheets.values.update(
             spreadsheetId=spreadsheet_id,
             range='A1:E30',
