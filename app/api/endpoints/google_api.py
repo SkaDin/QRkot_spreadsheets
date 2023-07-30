@@ -1,4 +1,4 @@
-from typing import List, Dict, Union, Tuple
+from typing import List, Dict
 
 from aiogoogle import Aiogoogle
 from fastapi import APIRouter, Depends
