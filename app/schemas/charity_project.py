@@ -24,6 +24,7 @@ class CharityProjectBase(BaseModel):
             raise ValueError('Имя не может быть пустым!')
         return value
 
+
 class CharityProjectCreate(CharityProjectBase):
     """Схема создания благотварительных проектов."""
     pass
