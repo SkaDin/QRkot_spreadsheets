@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Union, Tuple
 
 from aiogoogle import Aiogoogle
 from fastapi import APIRouter, Depends
@@ -18,7 +18,7 @@ router = APIRouter()
 
 @router.post(
     '/',
-    response_model=List[Dict],
+    response_model=List[Dict[str, str]],
     dependencies=[Depends(current_superuser)],
 )
 async def get_report(
@@ -29,9 +29,10 @@ async def get_report(
     Только для суперюзеров.
     Получение отчёта о скорости закрытия проектов
      """
-    close_charity_projects = await charity_project_crud.get_projects_by_completion_rate(
-        session
-    )
+    close_charity_projects = await (
+        charity_project_crud.get_projects_by_completion_rate(
+            session
+        ))
     spreadsheet_id = await spreadsheets_create(wrapper_services)
     await set_user_permissions(spreadsheet_id, wrapper_services)
     await spreadsheets_update_value(spreadsheet_id,
